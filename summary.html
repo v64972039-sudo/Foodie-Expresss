@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Summary | Foodie Express</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="summary-bg">
+  <div class="overlay">
+    <nav class="navbar">
+      <h1>Foodie Express 🍴</h1>
+      <button onclick="window.location.href='home.html'">🏠 Home</button>
+    </nav>
+
+    <div class="summary-box">
+      <h2>✅ Order Summary</h2>
+      <div id="orderDetails"></div>
+      <div class="summary-buttons">
+  <button class="track-btn" onclick="window.location.href='track.html'">Track Order 🚚</button>
+  <button class="logout-btn" onclick="window.location.href='login.html'">Logout</button>
+</div>
+
+    </div>
+  </div>
+
+  <script>
+    // Load order details
+    const order = JSON.parse(localStorage.getItem("lastOrder"));
+
+    if (!order) {
+      document.getElementById("orderDetails").innerHTML =
+        "<p>No order found. Please place an order first.</p>";
+    } else {
+      let html = `
+        <p><strong>🕒 Date:</strong> ${order.date}</p>
+        <p><strong>📍 Address:</strong> ${order.address}</p>
+        <p><strong>💳 Payment:</strong> ${order.payment}</p>
+        <h3>🛒 Items:</h3>
+        <ul>
+          ${order.items.map(item => `<li>${item.name} - ₹${item.price}</li>`).join("")}
+        </ul>
+        <h3>Total: ₹${order.total}</h3>
+      `;
+      document.getElementById("orderDetails").innerHTML = html;
+    }
+  </script>
+</body>
+</html>

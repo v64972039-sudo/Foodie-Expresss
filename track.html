@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Order | Foodie Express</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="track-bg">
+  <div class="overlay">
+    <nav class="navbar">
+      <h1>Foodie Express 🍴</h1>
+      <button onclick="window.location.href='home.html'">🏠 Home</button>
+    </nav>
+
+    <div class="track-box">
+      <h2>🚚 Track Your Order</h2>
+      <div class="progress">
+        <div id="stage1" class="stage active">🧑‍🍳 Preparing</div>
+        <div id="stage2" class="stage">🚴 Out for Delivery</div>
+        <div id="stage3" class="stage">🍽 Delivered</div>
+      </div>
+
+      <p id="statusText">Your order is being prepared...</p>
+      <button id="backBtn" style="display:none" onclick="window.location.href='home.html'">
+        Back to Home 🏠
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const stages = [
+      { id: "stage1", text: "Your order is being prepared..." },
+      { id: "stage2", text: "Your food is on the way 🚴‍♂️💨" },
+      { id: "stage3", text: "Order delivered successfully! 🍽🎉" }
+    ];
+
+    let current = 0;
+    const statusText = document.getElementById("statusText");
+    const backBtn = document.getElementById("backBtn");
+
+    function updateStage() {
+      document.getElementById(stages[current].id).classList.add("active");
+      statusText.innerText = stages[current].text;
+
+      if (current > 0) {
+        document.getElementById(stages[current - 1].id).classList.remove("active");
+      }
+
+      current++;
+
+      if (current < stages.length) {
+        setTimeout(updateStage, 4000);
+      } else {
+        backBtn.style.display = "inline-block";
+      }
+    }
+
+    // Start tracking
+    setTimeout(updateStage, 1000);
+  </script>
+</body>
+</html>

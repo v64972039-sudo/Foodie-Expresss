@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foodie Express | Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="home-bg">
+  <div class="overlay">
+    <nav class="navbar">
+      <h1>Foodie Express 🍴</h1>
+      <button id="logoutBtn">Logout</button>
+    </nav>
+
+    <div class="menu">
+      <h2>🍔 Today's Menu</h2>
+      <div class="items">
+        <div class="card">
+          <h3>Burger</h3>
+          <p>₹120</p>
+          <button onclick="addToCart('Burger', 120)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <h3>Pizza</h3>
+          <p>₹250</p>
+          <button onclick="addToCart('Pizza', 250)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <h3>Fries</h3>
+          <p>₹80</p>
+          <button onclick="addToCart('Fries', 80)">Add to Cart</button>
+        </div>
+        <div class="card">
+          <h3>Cold Coffee</h3>
+          <p>₹90</p>
+          <button onclick="addToCart('Cold Coffee', 90)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart">
+      <div class="cart-buttons"></div>
+      <h2>🛒 Your Cart</h2>
+      <ul id="cartList"></ul>
+      <h3>Total: ₹<span id="total">0</span></h3>
+      <button id="orderBtn">Place Order</button>
+      <button id="clearCartBtn">Clear Cart 🧹</button>
+    </div>
+  </div>
+
+    <!-- Address Popup -->
+    <div id="addressPopup" class="order-popup">
+      <div class="popup-box">
+        <h2>📍 Enter Delivery Address</h2>
+        <textarea id="addressInput" placeholder="Enter your full address..." rows="4"></textarea>
+        <br />
+        <button id="nextToPaymentBtn">Next ➡️</button>
+      </div>
+    </div>
+
+    <!-- Payment Popup -->
+    <div id="paymentPopup" class="order-popup">
+      <div class="popup-box">
+        <h2>💳 Select Payment Option</h2>
+        <label><input type="radio" name="payment" value="UPI"> UPI</label><br>
+        <label><input type="radio" name="payment" value="Card"> Credit/Debit Card</label><br>
+        <label><input type="radio" name="payment" value="Cash"> Cash on Delivery</label><br><br>
+        <button id="confirmPaymentBtn">Confirm Payment</button>
+      </div>
+    </div>
+
+    <!-- Success Popup -->
+    <div id="orderPopup" class="order-popup">
+      <div class="popup-box">
+        <h2>✅ Order Placed Successfully!</h2>
+        <p>Your delicious food is on the way 🚴‍♂️💨</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
